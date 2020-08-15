@@ -1,0 +1,23 @@
+package testdatas_test
+
+import (
+	"testing"
+
+	"github.com/nasjp/tiny-gotests/internal/processor/testdata/sample"
+)
+
+func TestParamExternalStruct(t *testing.T) {
+	t.Parallel()
+	type args struct{ a sample.Sample }
+	tests := []struct {
+		name string
+		args args
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			testdatas.ParamExternalStruct(tt.args.a)
+		})
+	}
+}

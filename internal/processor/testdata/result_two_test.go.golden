@@ -1,0 +1,30 @@
+package testdatas_test
+
+import (
+	"testing"
+
+	"github.com/google/go-cmp/cmp"
+)
+
+func TestResultTwo(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name  string
+		want1 int
+		want2 int
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got1, got2 := testdatas.ResultTwo()
+			if diff := cmp.Diff(tt.want1, got1); diff != "" {
+				t.Errorf("testdatas.ResultTwo() mismatch (-want1 +got1):\n%s", diff)
+			}
+			if diff := cmp.Diff(tt.want2, got2); diff != "" {
+				t.Errorf("testdatas.ResultTwo() mismatch (-want2 +got2):\n%s", diff)
+			}
+		})
+	}
+}
+

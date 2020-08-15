@@ -1,0 +1,26 @@
+package testdatas_test
+
+import (
+	"testing"
+
+	"github.com/google/go-cmp/cmp"
+)
+
+func TestResultOne(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name string
+		want int
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := testdatas.ResultOne()
+			if diff := cmp.Diff(tt.want, got); diff != "" {
+				t.Errorf("testdatas.ResultOne() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+

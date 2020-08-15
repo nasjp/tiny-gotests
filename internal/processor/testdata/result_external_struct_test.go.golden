@@ -1,0 +1,27 @@
+package testdatas_test
+
+import (
+	"testing"
+
+	"github.com/google/go-cmp/cmp"
+	"github.com/nasjp/tiny-gotests/internal/processor/testdata/sample"
+)
+
+func TestResultExternalStruct(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name string
+		want sample.Sample
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := testdatas.ResultExternalStruct()
+			if diff := cmp.Diff(tt.want, got); diff != "" {
+				t.Errorf("testdatas.ResultExternalStruct() mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
+

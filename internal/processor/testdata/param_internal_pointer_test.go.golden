@@ -1,0 +1,20 @@
+package testdatas_test
+
+import "testing"
+
+func TestParamInternalPointer(t *testing.T) {
+	t.Parallel()
+	type args struct{ a *testdatas.Sample }
+	tests := []struct {
+		name string
+		args args
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			testdatas.ParamInternalPointer(tt.args.a)
+		})
+	}
+}
+

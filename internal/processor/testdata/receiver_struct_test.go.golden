@@ -1,0 +1,19 @@
+package testdatas_test
+
+import "testing"
+
+func TestSampleReceiverStruct(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name     string
+		receiver testdatas.Sample
+	}{}
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			tt.receiver.ReceiverStruct()
+		})
+	}
+}
+
